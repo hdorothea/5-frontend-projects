@@ -1,6 +1,6 @@
 # 5 Frontend Projects
 
-The purpose of this projects is to learn web development with HTML, CSS and JavaScript (no frameworks, no jQuerry) without being bogged down by the architectural concerns of a full-stack app. Inspired by [25 React Projects](http://sean-smith.me/assets/portfolio/25-react-projects/index.html)
+The purpose of this [projects](https://hdorothea.github.io/5-frontend-projects/) is to learn web development with HTML, CSS and JavaScript (no frameworks, no jQuerry) without being bogged down by the architectural concerns of a full-stack app. Inspired by [25 React Projects](http://sean-smith.me/assets/portfolio/25-react-projects/index.html)
 
 I am not exactly sure yet which projects I am going to implement. Some ideas are:
 
