@@ -17,10 +17,14 @@ const controller = {
       if (this.model.checkWinner()) {
         this.view.setPlayerScore(this.model.winner, this.model.scores[this.model.winner]);
         this.view.highlightCells(this.model.winningIs);
-        this.view.setWinningMessage(`${this.model.winner} won!`);
-        this.view.showModal();
+        this.view.showModal(`${this.model.winner} won!`);
         return;
       }
+      if (this.model.checkFinished()) {
+        this.view.showModal('Draw');
+        return;
+      }
+
       this.toggleCurrentPlayer();
     }
   },

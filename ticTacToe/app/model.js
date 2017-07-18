@@ -54,6 +54,10 @@ class Model {
     this.toggleCurrentPlayer();
   }
 
+  checkFinished() {
+    return this.board.rows.map(row => row.every(cell => cell.mark !== '')).every(e => e);
+  }
+
   checkWinner() {
     for (const line of [...this.board.lines]) {
       if ((line.every(cell => cell.mark !== '')) && line.every(cell => cell.mark === line[0].mark)) {

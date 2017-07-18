@@ -95,10 +95,14 @@ var controller = {
       if (this.model.checkWinner()) {
         this.view.setPlayerScore(this.model.winner, this.model.scores[this.model.winner]);
         this.view.highlightCells(this.model.winningIs);
-        this.view.setWinningMessage(this.model.winner + ' won!');
-        this.view.showModal();
+        this.view.showModal(this.model.winner + ' won!');
         return;
       }
+      if (this.model.checkFinished()) {
+        this.view.showModal('Draw');
+        return;
+      }
+
       this.toggleCurrentPlayer();
     }
   },
@@ -215,6 +219,15 @@ var Model = function () {
       this.toggleCurrentPlayer();
     }
   }, {
+    key: 'checkFinished',
+    value: function checkFinished() {
+      return this.rows.map(function (row) {
+        return row.every(function (cell) {
+          return cell.mark !== '';
+        });
+      }).every();
+    }
+  }, {
     key: 'checkWinner',
     value: function checkWinner() {
       var _this = this;
@@ -278,9 +291,6 @@ var view = {
   message: document.querySelector('#win-message'),
   continue: document.querySelector('#round-end-modal #continue'),
 
-  setWinningMessage: function setWinningMessage(message) {
-    this.message.textContent = message;
-  },
   doMarkCell: function doMarkCell(cell, mark) {
     cell.classList.add(mark.toLowerCase());
     cell.textContent = mark;
@@ -291,7 +301,8 @@ var view = {
   highlightCurrentPlayer: function highlightCurrentPlayer(currentPlayer) {
     this.getPlayerLabel(currentPlayer).classList.add('current-player');
   },
-  showModal: function showModal() {
+  showModal: function showModal(message) {
+    this.message.textContent = message;
     this.modal.style.display = 'flex';
   },
   reset: function reset() {

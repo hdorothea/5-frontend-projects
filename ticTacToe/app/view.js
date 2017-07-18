@@ -9,10 +9,6 @@ const view = {
   message: document.querySelector('#win-message'),
   continue: document.querySelector('#round-end-modal #continue'),
 
-  setWinningMessage(message) {
-    this.message.textContent = message;
-  },
-
   doMarkCell(cell, mark) {
     cell.classList.add(mark.toLowerCase());
     cell.textContent = mark;
@@ -26,7 +22,8 @@ const view = {
     this.getPlayerLabel(currentPlayer).classList.add('current-player');
   },
 
-  showModal() {
+  showModal(message) {
+    this.message.textContent = message;
     this.modal.style.display = 'flex';
   },
 
