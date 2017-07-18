@@ -221,11 +221,13 @@ var Model = function () {
   }, {
     key: 'checkFinished',
     value: function checkFinished() {
-      return this.rows.map(function (row) {
+      return this.board.rows.map(function (row) {
         return row.every(function (cell) {
           return cell.mark !== '';
         });
-      }).every();
+      }).every(function (e) {
+        return e;
+      });
     }
   }, {
     key: 'checkWinner',
