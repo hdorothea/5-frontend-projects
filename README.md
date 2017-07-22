@@ -15,10 +15,10 @@ I am not exactly sure yet which projects I am going to implement. Some ideas are
 ## The challenge
 
 1. Do not spend more than a day per project. 
-2. Add one technology/tool you are not very comfortable with per project. I.e for me:
+2. Add one technology/tool/pattern you are not very comfortable with per project. I.e for me:
 
 * Project 1: never ever type console.log for debugging use developer tools
-* Project 2: unit test using chai, moccha and karma
-* Project 3: use sass
-
-etc.
+* Project 2: unit test using jasmine and karma
+* Project 3: actual mvc
+* Project 4: css animations
+* Project 5: sass, css modules
