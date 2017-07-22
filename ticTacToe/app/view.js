@@ -28,7 +28,7 @@ const view = {
   },
 
   reset() {
-    for (const cell of this.cells) {
+    for (const cell of [...this.cells]) {
       cell.textContent = '';
       cell.classList.remove('winning-cell');
       cell.classList.remove('x');
