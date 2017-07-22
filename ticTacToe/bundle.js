@@ -8205,6 +8205,8 @@ var _view2 = _interopRequireDefault(_view);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 var controller = {
   view: _view2.default,
   model: _model2.default,
@@ -8239,29 +8241,11 @@ var controller = {
   run: function run() {
     var _this = this;
 
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+    var _arr = [].concat(_toConsumableArray(this.view.cells));
 
-    try {
-      for (var _iterator = this.view.cells[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var cell = _step.value;
-
-        cell.addEventListener('click', this.makeMove.bind(this));
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
+    for (var _i = 0; _i < _arr.length; _i++) {
+      var cell = _arr[_i];
+      cell.addEventListener('click', this.makeMove.bind(this));
     }
 
     _view2.default.modal.addEventListener('click', function () {
