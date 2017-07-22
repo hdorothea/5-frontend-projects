@@ -8205,8 +8205,6 @@ var _view2 = _interopRequireDefault(_view);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 var controller = {
   view: _view2.default,
   model: _model2.default,
@@ -8241,11 +8239,29 @@ var controller = {
   run: function run() {
     var _this = this;
 
-    var _arr = [].concat(_toConsumableArray(this.view.cells));
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
-    for (var _i = 0; _i < _arr.length; _i++) {
-      var cell = _arr[_i];
-      cell.addEventListener('click', this.makeMove.bind(this));
+    try {
+      for (var _iterator = this.view.cells[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var cell = _step.value;
+
+        cell.addEventListener('click', this.makeMove.bind(this));
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
     }
 
     _view2.default.modal.addEventListener('click', function () {
@@ -8393,7 +8409,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var view = {
   body: document.body,
-  cells: document.getElementById('board').getElementsByTagName('td'),
+  cells: [].concat(_toConsumableArray(document.getElementById('board').getElementsByTagName('td'))),
   xPlayerLabel: document.querySelector('#labels .x'),
   oPlayerLabel: document.querySelector('#labels .o'),
   oPlayerScore: document.querySelector('.o-score'),
@@ -8417,31 +8433,18 @@ var view = {
     this.modal.style.display = 'flex';
   },
   reset: function reset() {
-    var _arr = [].concat(_toConsumableArray(this.cells));
-
-    for (var _i = 0; _i < _arr.length; _i++) {
-      var cell = _arr[_i];
-      cell.textContent = '';
-      cell.classList.remove('winning-cell');
-      cell.classList.remove('x');
-      cell.classList.remove('o');
-    }
-    this.message.textContent = '';
-    this.modal.style.display = 'none';
-  },
-  getCellByI: function getCellByI(i0, i1) {
-    return document.getElementById('board').rows[i0].cells[i1];
-  },
-  highlightCells: function highlightCells(cellIs) {
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
 
     try {
-      for (var _iterator = cellIs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var cellI = _step.value;
+      for (var _iterator = this.cells[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var cell = _step.value;
 
-        this.getCellByI.apply(this, _toConsumableArray(cellI)).classList.add('winning-cell');
+        cell.textContent = '';
+        cell.classList.remove('winning-cell');
+        cell.classList.remove('x');
+        cell.classList.remove('o');
       }
     } catch (err) {
       _didIteratorError = true;
@@ -8454,6 +8457,38 @@ var view = {
       } finally {
         if (_didIteratorError) {
           throw _iteratorError;
+        }
+      }
+    }
+
+    this.message.textContent = '';
+    this.modal.style.display = 'none';
+  },
+  getCellByI: function getCellByI(i0, i1) {
+    return document.getElementById('board').rows[i0].cells[i1];
+  },
+  highlightCells: function highlightCells(cellIs) {
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+      for (var _iterator2 = cellIs[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var cellI = _step2.value;
+
+        this.getCellByI.apply(this, _toConsumableArray(cellI)).classList.add('winning-cell');
+      }
+    } catch (err) {
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+          _iterator2.return();
+        }
+      } finally {
+        if (_didIteratorError2) {
+          throw _iteratorError2;
         }
       }
     }

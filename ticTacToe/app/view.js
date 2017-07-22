@@ -1,6 +1,6 @@
 const view = {
   body: document.body,
-  cells: document.getElementById('board').getElementsByTagName('td'),
+  cells: [...document.getElementById('board').getElementsByTagName('td')],
   xPlayerLabel: document.querySelector('#labels .x'),
   oPlayerLabel: document.querySelector('#labels .o'),
   oPlayerScore: document.querySelector('.o-score'),
@@ -28,7 +28,7 @@ const view = {
   },
 
   reset() {
-    for (const cell of [...this.cells]) {
+    for (const cell of this.cells) {
       cell.textContent = '';
       cell.classList.remove('winning-cell');
       cell.classList.remove('x');

@@ -36,7 +36,7 @@ const controller = {
   },
 
   run() {
-    for (const cell of [...this.view.cells]) {
+    for (const cell of this.view.cells) {
       cell.addEventListener('click', this.makeMove.bind(this));
     }
 
